@@ -5,9 +5,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListView;
+import android.widget.SimpleAdapter;
 import android.widget.TextView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -22,6 +28,12 @@ public class MainActivity extends AppCompatActivity {
     Button btnSamaDengan;
     EditText etInput;
     EditText etInput2;
+    ListView listView;
+
+    /*utk object data list*/
+    List<String> list = new ArrayList<String>();
+    String listString = "";
+    ArrayAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
         btnSamaDengan = findViewById(R.id.btnSamaDengan);
         etInput = findViewById(R.id.etInput);
         etInput2 = findViewById(R.id.etInput2);
+        listView = findViewById(R.id.listView);
 
         /*
         * 3. Buat eventnya
@@ -85,15 +98,31 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        btnSamaDengan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                hitung("=");
+            }
+        });
+
         /*
-        * TUGAS
-        *
-        *
+        * membuat adapter utk listView
         * */
+
+        /*utk menampung object data list*/
+        adapter =
+                new ArrayAdapter(
+                        this,
+                        android.R.layout.simple_list_item_1,
+                        list);
+
+        /*untuk menampilkan*/
+        listView.setAdapter( adapter );
 
     }
 
     private void hitung(String operator){
+
 
         /*
          * get value input 1
@@ -106,14 +135,41 @@ public class MainActivity extends AppCompatActivity {
 
         if (operator.equals("*")){
             hasil = input1 * input2;
-        }else{
+
+            listString = input1 + " * " + input2 + " = " + hasil;
+
+        }else if (operator.equals("/")){
             hasil = input1 / input2;
+
+            listString = input1 + " / " + input2 + " = " + hasil;
+
+        }else if (operator.equals("+")){
+            hasil = input1 + input2;
+
+            listString = input1 + " + " + input2 + " = " + hasil;
+
+        }else if (operator.equals("-")){
+            hasil = input1 - input2;
+
+            listString = input1 + " - " + input2 + " = " + hasil;
+
+        }else{
+            /*utk sama dengan*/
+            list.add( listString );
+
+            /*refresh*/
+            adapter.notifyDataSetChanged();
+
+            /*
+             * set hasil ke label
+             * */
+            tvHasil.setText( listString );
+            listString = "";
+
+            Log.d("DEBUGGG", list.toString());
         }
 
-        /*
-         * set hasil ke label
-         * */
-        tvHasil.setText( String.valueOf(hasil) );
+
     }
 
 
