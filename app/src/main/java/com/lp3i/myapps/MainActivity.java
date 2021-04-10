@@ -111,7 +111,15 @@ public class MainActivity extends AppCompatActivity {
         btnHapus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                
+
+                Log.d("DEBUGGG", "clicked btn hapus");
+
+                /*hapus list semua*/
+                list.clear();
+
+                /*refresh*/
+                adapter.notifyDataSetChanged();
+
             }
         });
 
