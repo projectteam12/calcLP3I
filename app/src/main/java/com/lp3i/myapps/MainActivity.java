@@ -29,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
     EditText etInput;
     EditText etInput2;
     ListView listView;
+    Button btnHapus;
 
     /*utk object data list*/
     List<String> list = new ArrayList<String>();
@@ -49,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
         btnTambah = findViewById(R.id.btnTambah);
         btnKurang = findViewById(R.id.btnKurang);
         btnSamaDengan = findViewById(R.id.btnSamaDengan);
+        btnHapus = findViewById(R.id.btnHapus);
         etInput = findViewById(R.id.etInput);
         etInput2 = findViewById(R.id.etInput2);
         listView = findViewById(R.id.listView);
@@ -102,6 +104,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 hitung("=");
+            }
+        });
+
+        /*button hapus*/
+        btnHapus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                
             }
         });
 
