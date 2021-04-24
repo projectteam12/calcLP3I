@@ -6,6 +6,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.lp3i.myapps.R;
+import com.lp3i.myapps.resto.model.Order;
 
 import java.util.ArrayList;
 
@@ -15,10 +16,10 @@ import androidx.recyclerview.widget.RecyclerView;
 public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.MyViewHolder> {
 
     /*membuat variabel*/
-    private ArrayList<String> orderList;
+    private ArrayList<Order> orderList;
 
     /*membuat constructor untuk memberikan nilai dari class yang lain*/
-    public OrderAdapter(ArrayList<String> orderList){
+    public OrderAdapter(ArrayList<Order> orderList){
         this.orderList = orderList;
     }
 
@@ -36,7 +37,12 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.MyViewHolder
     @Override
     public void onBindViewHolder(@NonNull OrderAdapter.MyViewHolder holder, int position) {
         /*untuk memberikan nilai ke layout list*/
-        holder.tvOrderId.setText( orderList.get(position) );
+        holder.tvOrderId.setText( orderList.get(position).nama );
+        holder.tvHarga.setText( String.valueOf(orderList.get(position).harga) );
+
+        int qty = 2;
+
+        holder.tvSubtotal.setText( String.valueOf(orderList.get(position).harga * qty) );
     }
 
     @Override
@@ -48,11 +54,15 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.MyViewHolder
 
         /*membuat variabel layout item list*/
         TextView tvOrderId;
+        TextView tvHarga;
+        TextView tvSubtotal;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
 
             tvOrderId = itemView.findViewById(R.id.tvOrderID);
+            tvHarga = itemView.findViewById(R.id.tvHarga);
+            tvSubtotal = itemView.findViewById(R.id.tvSubtotal);
         }
     }
 }

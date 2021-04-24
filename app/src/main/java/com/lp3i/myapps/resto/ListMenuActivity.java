@@ -11,6 +11,7 @@ import android.widget.Button;
 
 import com.lp3i.myapps.R;
 import com.lp3i.myapps.resto.adapter.OrderAdapter;
+import com.lp3i.myapps.resto.model.Order;
 
 import java.util.ArrayList;
 
@@ -39,10 +40,17 @@ public class ListMenuActivity extends AppCompatActivity {
             }
         });
 
-        ArrayList<String> listOrder = new ArrayList<>();
-        listOrder.add("Kurma Sukkari");
-        listOrder.add("Kurma Ajwa");
-        listOrder.add("Susu Kambing");
+        ArrayList<Order> listOrder = new ArrayList<Order>();
+
+        Order order = new Order();
+        order.nama = "kurma";
+        order.harga = 2000;
+        listOrder.add(order);
+
+        order = new Order();
+        order.nama = "susu";
+        order.harga = 1500;
+        listOrder.add(order);
 
         adapter = new OrderAdapter(listOrder);
 
