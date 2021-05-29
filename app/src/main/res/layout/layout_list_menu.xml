@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
+    android:padding="10dp"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
@@ -12,8 +13,20 @@
         android:layout_height="wrap_content"/>
 
     <TextView
+        android:id="@+id/tvNama"
+        android:text="Nama: Nasi Uduk"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <TextView
         android:id="@+id/tvHarga"
         android:text="Harga Rp. 20.000"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:id="@+id/tvQty"
+        android:text="Qty: 1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 

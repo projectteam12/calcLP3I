@@ -37,12 +37,12 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.MyViewHolder
     @Override
     public void onBindViewHolder(@NonNull OrderAdapter.MyViewHolder holder, int position) {
         /*untuk memberikan nilai ke layout list*/
-        holder.tvOrderId.setText( orderList.get(position).nama );
-        holder.tvHarga.setText( String.valueOf(orderList.get(position).harga) );
+        holder.tvOrderId.setText( "Order #"+orderList.get(position).id );
+        holder.tvNama.setText( "Nama: "+orderList.get(position).nama );
+        holder.tvHarga.setText( "@"+String.valueOf(orderList.get(position).harga) );
+        holder.tvQty.setText( "Qty: "+String.valueOf(orderList.get(position).qty) );
 
-        int qty = 2;
-
-        holder.tvSubtotal.setText( String.valueOf(orderList.get(position).harga * qty) );
+        holder.tvSubtotal.setText( "Subtotal:"+String.valueOf(orderList.get(position).harga * orderList.get(position).qty) );
     }
 
     @Override
@@ -54,14 +54,18 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.MyViewHolder
 
         /*membuat variabel layout item list*/
         TextView tvOrderId;
+        TextView tvNama;
         TextView tvHarga;
         TextView tvSubtotal;
+        TextView tvQty;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
 
             tvOrderId = itemView.findViewById(R.id.tvOrderID);
+            tvNama = itemView.findViewById(R.id.tvNama);
             tvHarga = itemView.findViewById(R.id.tvHarga);
+            tvQty = itemView.findViewById(R.id.tvQty);
             tvSubtotal = itemView.findViewById(R.id.tvSubtotal);
         }
     }
